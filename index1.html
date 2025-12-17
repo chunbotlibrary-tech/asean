@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASEAN Knowledge - កម្មវិធីសិក្សាអាស៊ាន</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
+    <style>
+        :root {
+            --primary-color: #0D47A1;
+            --secondary-color: #D32F2F;
+            --accent-color: #FFC107;
+            --success-color: #2E7D32;
+            
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-primary: #1a237e;
+            --text-secondary: #5a5a72;
+            --border-color: #e0e0e0;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), #1565C0);
+            
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 20px;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .khmer-font {
+            font-family: 'Battambang', sans-serif;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+            min-height: calc(100vh - 180px);
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.6;
+        }
+        
+        /* Lessons Grid */
+        .lessons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .lesson-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .lesson-content {
+            padding: var(--spacing-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .lesson-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .lesson-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0b3d91;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(13, 71, 161, 0.05);
+        }
+        
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        /* Quiz Styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-header {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .options-container {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background: rgba(13, 71, 161, 0.02);
+        }
+        
+        .option.selected {
+            border-color: var(--primary-color);
+            background: rgba(13, 71, 161, 0.05);
+        }
+        
+        /* Leaderboard */
+        .leaderboard-table {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border-collapse: collapse;
+        }
+        
+        .leaderboard-table th {
+            background: rgba(13, 71, 161, 0.1);
+            color: var(--primary-color);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .leaderboard-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Loading */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            gap: 1rem;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(13, 71, 161, 0.1);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: var(--spacing-md);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .lessons-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+        
+        /* Message */
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .message.success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .message.error {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home'); return false;">
+                <div class="logo-icon">អ</div>
+                <div class="logo-text khmer-font">ASEAN Knowledge</div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i data-lucide="menu"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="nav-link active" onclick="showPage('home'); return false;">
+                    <i data-lucide="book-open"></i>
+                    <span class="khmer-font">មេរៀន</span>
+                </a>
+                <a href="#" class="nav-link" onclick="showPage('leaderboard'); return false;">
+                    <i data-lucide="trophy"></i>
+                    <span class="khmer-font">អ្នកឆ្នើម</span>
+                </a>
+                <button class="btn btn-secondary" onclick="refreshData()">
+                    <i data-lucide="refresh-cw"></i>
+                    <span class="khmer-font">ផ្ទុកឡើងវិញ</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p class="khmer-font">កំពុងផ្ទុកកម្មវិធី...</p>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer style="background: var(--primary-color); color: white; padding: var(--spacing-md); text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p class="khmer-font">© ២០២៥ កម្មវិធីសិក្សាអាស៊ាន</p>
+            <p>ស្វែងយល់ពីប្រវត្តិសាស្ត្រ ច្បាប់ និងវប្បធម៌របស់អាស៊ាន</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <script>
+        // ============================================
+        // កូដ JavaScript ពេញលេញដែលបានកែតម្រូវ
+        // ============================================
+
+        // រង់ចាំឱ្យទាំងអស់ load អស់
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing app...');
+            
+            // Initialize icons
+            if (window.lucide) {
+                lucide.createIcons();
+                console.log('Lucide icons initialized');
+            } else {
+                console.error('Lucide not loaded');
+            }
+            
+            // Initialize app
+            initApp();
+        });
+
+        // Function to update icons safely
+        function updateIcons() {
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide not available, skipping icon update');
+            }
+        }
+
+        // Configuration
+        const SHEET_ID = '1gU-k4KuhjqLTqKzOakfj2duhNf6mhrGO_NkW8dwiHTE';
+        const API_KEY = 'AIzaSyCmWu60e8pf939POZxBlHjkRBT_FsLJSlI';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxCmgTgRIO5mRczDYZZAuzszVDsK6PRITL8CGZt9EvybM4EQ_JbNyUjpM-bNHuz26WWzA/exec';
+
+        // Global variables - INITIALIZED HERE
+        let currentPage = 'home';
+        let currentLesson = null;
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        let lessonsData = [];
+        let questionsData = [];
+        let scoresData = [];
+
+        // Toggle mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+            updateIcons();
+        });
+
+        // Show message function
+        function showMessage(text, type = 'success') {
+            // Remove existing messages
+            const existingMsg = document.querySelector('.message');
+            if (existingMsg) existingMsg.remove();
+            
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.innerHTML = `
+                <span>${text}</span>
+                <button onclick="this.parentElement.remove()" style="
+                    background: none;
+                    border: none;
+                    color: inherit;
+                    cursor: pointer;
+                    margin-left: 12px;
+                ">
+                    X
+                </button>
+            `;
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                if (message.parentElement) {
+                    message.remove();
+                }
+            }, 3000);
+        }
+
+        // Load data from Google Sheets
+        async function loadDataFromSheet(sheetName) {
+            try {
+                console.log(`Loading ${sheetName} from Google Sheets...`);
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheetName}?key=${API_KEY}`;
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data.values || data.values.length < 2) {
+                    console.log(`No data in ${sheetName}, using sample data`);
+                    return getSampleData(sheetName);
+                }
+                
+                const headers = data.values[0].map(h => h.toLowerCase().trim());
+                const rows = data.values.slice(1);
+                
+                const result = rows.map(row => {
+                    const obj = {};
+                    headers.forEach((header, index) => {
+                        let value = row[index] || '';
+                        if (header === 'content') {
+                            value = value.replace(/\n/g, '<br>');
+                        }
+                        obj[header] = value;
+                    });
+                    return obj;
+                });
+                
+                console.log(`Loaded ${result.length} rows from ${sheetName}`);
+                return result;
+            } catch (error) {
+                console.error(`Error loading ${sheetName}:`, error);
+                return getSampleData(sheetName);
+            }
+        }
+
+        function getSampleData(sheetName) {
+            if (sheetName === 'Lessons') {
+                return [
+                    {
+                        id: "1",
+                        title: "ស្គាល់អំពីអាស៊ាន",
+                        description: "ស្វែងយល់ពីប្រវត្តិសាស្ត្រ គោលបំណង និងរចនាសម្ព័ន្ធរបស់អាស៊ាន",
+                        content: "សមាគមប្រជាជាតិអាស៊ីអាគ្នេយ៍ (អាស៊ាន) ត្រូវបានបង្កើតឡើងនៅថ្ងៃទី ៨ ខែសីហា ឆ្នាំ ១៩៦៧ នៅក្រុងបាងកក ប្រទេសថៃ។<br><br>ប្រទេសសមាជិកដំបូងមាន៥ គឺ៖<br>• ឥណ្ឌូនេស៊ី<br>• ម៉ាឡេស៊ី<br>• ហ្វីលីពីន<br>• សិង្ហបុរី<br>• ថៃ",
+                        image: "https://images.unsplash.com/photo-1528164344705-47542687000d?w=800&auto=format&fit=crop"
+                    },
+                    {
+                        id: "2",
+                        title: "ទង់អាស៊ាន",
+                        description: "សិក្សាអំពីសំគាល់ និងអត្ថន័យនៃទង់ជាតិអាស៊ាន",
+                        content: "ទង់អាស៊ានត្រូវបានទទួលស្គាល់ជាផ្លូវការនៅឆ្នាំ ១៩៩៧។<br><br>ពណ៌នៃទង់៖<br>• ខៀវ៖ ស្ថិរភាព សន្តិភាព<br>• ក្រហម៖ ភាពក្លាហាន សមធម៌<br>• លឿង៖ ភាពរីកចម្រើន សុភមង្គល<br><br>ស្លឹកស្រូវ ១០ស្លឹកតំណាងឱ្យប្រទេសសមាជិកទាំង១០។",
+                        image: "https://images.unsplash.com/photo-1589321599763-db0d2dfe0323?w=800&auto=format&fit=crop"
+                    }
+                ];
+            } else if (sheetName === 'Questions') {
+                return [
+                    {
+                        id: "1",
+                        lessonid: "1",
+                        question: "តើអាស៊ានបង្កើតឡើងនៅឆ្នាំណា?",
+                        options: "1965,1967,1970,1975",
+                        correctanswer: "1967"
+                    },
+                    {
+                        id: "2",
+                        lessonid: "1",
+                        question: "តើប្រទេសសមាជិកដំបូងរបស់អាស៊ានមានប៉ុន្មាន?",
+                        options: "3,5,7,10",
+                        correctanswer: "5"
+                    },
+                    {
+                        id: "3",
+                        lessonid: "2",
+                        question: "តើស្លឹកស្រូវលើទង់អាស៊ានមានប៉ុន្មានស្លឹក?",
+                        options: "8,10,12,15",
+                        correctanswer: "10"
+                    }
+                ];
+            }
+            return [];
+        }
+
+        // Load scores via Apps Script
+        async function loadScores() {
+            try {
+                console.log('Loading scores from Apps Script...');
+                const response = await fetch(`${APPS_SCRIPT_URL}?action=getScores`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (Array.isArray(data)) {
+                    scoresData = data;
+                    console.log(`Loaded ${scoresData.length} scores from Apps Script`);
+                } else {
+                    console.log('No scores from Apps Script, checking localStorage');
+                    throw new Error('Invalid data format');
+                }
+            } catch (error) {
+                console.error('Error loading from Apps Script:', error);
+                
+                // Fallback to localStorage
+                try {
+                    const localData = localStorage.getItem('asean_scores');
+                    scoresData = localData ? JSON.parse(localData) : [];
+                    console.log(`Loaded ${scoresData.length} scores from localStorage`);
+                } catch (localError) {
+                    console.error('Error loading from localStorage:', localError);
+                    scoresData = [];
+                }
+            }
+            
+            // Sort by score (descending)
+            scoresData.sort((a, b) => {
+                const scoreA = parseInt(a.score) || 0;
+                const scoreB = parseInt(b.score) || 0;
+                return scoreB - scoreA;
+            });
+        }
+
+        // Save score via Apps Script
+        async function saveScore(username, scoreValue, lessonId) {
+            const scoreData = {
+                username: username.trim(),
+                score: scoreValue.toString(),
+                lessonid: lessonId,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Attempting to save score:', scoreData);
+            
+            try {
+                // Try to save to Google Sheets via Apps Script
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(scoreData)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                const result = await response.json();
+                console.log('Response data:', result);
+                
+                if (result.success) {
+                    console.log('Score saved to Google Sheets successfully');
+                    
+                    // Also save to localStorage as backup
+                    saveToLocalStorage(scoreData);
+                    
+                    // Add to current scores data
+                    scoresData.push(scoreData);
+                    scoresData.sort((a, b) => {
+                        const scoreA = parseInt(a.score) || 0;
+                        const scoreB = parseInt(b.score) || 0;
+                        return scoreB - scoreA;
+                    });
+                    
+                    showMessage('រក្សាទុកពិន្ទុដោយជោគជ័យ!', 'success');
+                    return true;
+                } else {
+                    throw new Error(result.error || 'Save failed');
+                }
+            } catch (error) {
+                console.error('Error saving to Google Sheets:', error);
+                
+                // Fallback: Save to localStorage only
+                const saved = saveToLocalStorage(scoreData);
+                if (saved) {
+                    // Add to current scores data
+                    scoresData.push(scoreData);
+                    scoresData.sort((a, b) => {
+                        const scoreA = parseInt(a.score) || 0;
+                        const scoreB = parseInt(b.score) || 0;
+                        return scoreB - scoreA;
+                    });
+                    
+                    showMessage('រក្សាទុកក្នុងកុំព្យូទ័ររបស់អ្នកដោយជោគជ័យ', 'success');
+                    return true;
+                } else {
+                    showMessage('មិនអាចរក្សាទុកពិន្ទុបាន', 'error');
+                    return false;
+                }
+            }
+        }
+
+        function saveToLocalStorage(scoreData) {
+            try {
+                let scores = JSON.parse(localStorage.getItem('asean_scores') || '[]');
+                scores.push(scoreData);
+                
+                // Keep only last 100 scores
+                if (scores.length > 100) {
+                    scores = scores.slice(-100);
+                }
+                
+                localStorage.setItem('asean_scores', JSON.stringify(scores));
+                console.log('Score saved to localStorage');
+                return true;
+            } catch (error) {
+                console.error('Error saving to localStorage:', error);
+                return false;
+            }
+        }
+
+        // Load all data
+        async function loadAllData() {
+            console.log('Loading all data...');
+            try {
+                const [lessons, questions, scores] = await Promise.all([
+                    loadDataFromSheet('Lessons'),
+                    loadDataFromSheet('Questions'),
+                    loadScores()
+                ]);
+                
+                lessonsData = lessons;
+                questionsData = questions;
+                scoresData = scores;
+                
+                console.log(`Loaded: ${lessonsData.length} lessons, ${questionsData.length} questions, ${scoresData.length} scores`);
+                return true;
+            } catch (error) {
+                console.error('Error loading all data:', error);
+                return false;
+            }
+        }
+
+        // Show Home Page
+        async function showHomePage() {
+            console.log('Showing home page...');
+            currentPage = 'home';
+            updateNavLinks();
+            
+            if (lessonsData.length === 0) {
+                await loadAllData();
+            }
+            
+            const html = `
+                <div class="fade-in">
+                    <h1 class="page-title khmer-font">ស្វែងយល់ពីអាស៊ាន</h1>
+                    <p class="page-subtitle khmer-font">រៀនពីប្រវត្តិសាស្ត្រ វប្បធម៌ និងស្ថាប័ននានារបស់អាស៊ាន</p>
+                    
+                    <div class="lessons-container">
+                        ${lessonsData.map(lesson => `
+                            <div class="lesson-card">
+                                <div class="lesson-image" style="background: var(--gradient-primary);"></div>
+                                <div class="lesson-content">
+                                    <h3 class="lesson-title khmer-font">${lesson.title}</h3>
+                                    <p class="lesson-description khmer-font">${lesson.description}</p>
+                                    <button class="btn btn-primary" onclick="showLessonDetail('${lesson.id}')">
+                                        <i data-lucide="play-circle"></i>
+                                        <span class="khmer-font">ចាប់ផ្តើមរៀន</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('main-content').innerHTML = html;
+            updateIcons();
+        }
+
+        // Show Lesson Detail
+        async function showLessonDetail(lessonId) {
+            console.log(`Showing lesson detail for ID: ${lessonId}`);
+            currentPage = 'lesson';
+            updateNavLinks();
+            
+            const lesson = lessonsData.find(l => l.id == lessonId);
+            if (!lesson) {
+                showMessage('មិនអាចរកឃើញមេរៀននេះទេ', 'error');
+                return showHomePage();
+            }
+            
+            currentLesson = lesson;
+            
+            const html = `
+                <div class="fade-in">
+                    <div style="
+                        background: white;
+                        border-radius: var(--radius-xl);
+                        overflow: hidden;
+                        box-shadow: var(--shadow-md);
+                        margin-bottom: var(--spacing-md);
+                    ">
+                        <div style="
+                            width: 100%;
+                            height: 280px;
+                            background: var(--gradient-primary);
+                        "></div>
+                        <div style="padding: var(--spacing-lg);">
+                            <h1 style="
+                                font-size: 1.8rem;
+                                font-weight: 700;
+                                color: var(--primary-color);
+                                margin-bottom: var(--spacing-md);
+                            " class="khmer-font">${lesson.title}</h1>
+                            <div style="
+                                color: var(--text-secondary);
+                                font-size: 1.05rem;
+                                line-height: 1.8;
+                            " class="khmer-font">${lesson.content}</div>
+                            <div style="margin-top: var(--spacing-lg); text-align: center;">
+                                <button class="btn btn-success" onclick="startQuiz('${lessonId}')" style="padding: 1rem 2rem;">
+                                    <i data-lucide="help-circle"></i>
+                                    <span class="khmer-font">ចាប់ផ្តើមតេស្ត</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="btn btn-secondary" onclick="showHomePage()">
+                            <i data-lucide="arrow-left"></i>
+                            <span class="khmer-font">ត្រឡប់ទៅមេរៀន</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('main-content').innerHTML = html;
+            updateIcons();
+        }
+
+        // Start Quiz
+        async function startQuiz(lessonId) {
+            console.log(`Starting quiz for lesson: ${lessonId}`);
+            currentPage = 'quiz';
+            updateNavLinks();
+            
+            if (questionsData.length === 0) {
+                await loadAllData();
+            }
+            
+            currentQuiz = questionsData.filter(q => q.lessonid == lessonId);
+            if (currentQuiz.length === 0) {
+                showMessage('មិនទាន់មានសំណួរសម្រាប់មេរៀននេះទេ', 'error');
+                return;
+            }
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedOption = null;
+            showQuestion();
+        }
+
+        // Show Question
+        function showQuestion() {
+            if (currentQuestionIndex >= currentQuiz.length) {
+                showQuizComplete();
+                return;
+            }
+            
+            const question = currentQuiz[currentQuestionIndex];
+            const options = question.options.split(',');
+            
+            const html = `
+                <div class="fade-in">
+                    <div class="quiz-header">
+                        <div>
+                            <span class="khmer-font">សំណួរ ${currentQuestionIndex + 1} / ${currentQuiz.length}</span>
+                        </div>
+                        <div style="font-weight: 700; color: var(--primary-color);">
+                            <span class="khmer-font">ពិន្ទុ: ${score}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card">
+                        <h2 class="question-text khmer-font">${question.question}</h2>
+                        
+                        <div class="options-container">
+                            ${options.map((opt, index) => `
+                                <div class="option" onclick="selectOption(${index})" id="option-${index}">
+                                    <div style="
+                                        width: 24px;
+                                        height: 24px;
+                                        border-radius: 50%;
+                                        border: 2px solid var(--border-color);
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-weight: 600;
+                                    ">${String.fromCharCode(65 + index)}</div>
+                                    <span class="khmer-font">${opt.trim()}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-lg);">
+                            <button class="btn btn-secondary" onclick="showLessonDetail('${currentLesson.id}')">
+                                <i data-lucide="x"></i>
+                                <span class="khmer-font">បោះបង់</span>
+                            </button>
+                            <button class="btn btn-primary" id="nextBtn" onclick="checkAnswer()" disabled>
+                                <span class="khmer-font">បន្ទាប់</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('main-content').innerHTML = html;
+            updateIcons();
+        }
+
+        // Select Option
+        function selectOption(index) {
+            // Remove selection from all options
+            for (let i = 0; i < 4; i++) {
+                const el = document.getElementById(`option-${i}`);
+                if (el) el.classList.remove('selected');
+            }
+            
+            // Select clicked option
+            const selectedEl = document.getElementById(`option-${index}`);
+            if (selectedEl) {
+                selectedEl.classList.add('selected');
+                selectedOption = index;
+                document.getElementById('nextBtn').disabled = false;
+            }
+        }
+
+        // Check Answer
+        function checkAnswer() {
+            const question = currentQuiz[currentQuestionIndex];
+            const options = question.options.split(',');
+            const correctIndex = options.findIndex(opt => opt.trim() === question.correctanswer);
+            
+            // Mark correct/incorrect
+            for (let i = 0; i < options.length; i++) {
+                const el = document.getElementById(`option-${i}`);
+                if (el) {
+                    if (i === correctIndex) {
+                        el.style.borderColor = '#4CAF50';
+                        el.style.background = 'rgba(76, 175, 80, 0.1)';
+                    } else if (i === selectedOption) {
+                        el.style.borderColor = '#f44336';
+                        el.style.background = 'rgba(244, 67, 54, 0.1)';
+                    }
+                    el.style.pointerEvents = 'none';
+                }
+            }
+            
+            // Update score if correct
+            if (selectedOption === correctIndex) {
+                score += 10;
+            }
+            
+            // Update button
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.innerHTML = currentQuestionIndex + 1 < currentQuiz.length ? 
+                '<span class="khmer-font">បន្ទាប់</span> <i data-lucide="arrow-right"></i>' :
+                '<span class="khmer-font">បញ្ចប់</span> <i data-lucide="check"></i>';
+            
+            nextBtn.onclick = () => {
+                currentQuestionIndex++;
+                selectedOption = null;
+                showQuestion();
+            };
+            
+            updateIcons();
+        }
+
+        // Show Quiz Complete
+        function showQuizComplete() {
+            console.log('Quiz complete, score:', score);
+            const html = `
+                <div class="fade-in">
+                    <div style="
+                        background: white;
+                        border-radius: var(--radius-xl);
+                        padding: var(--spacing-lg);
+                        text-align: center;
+                        box-shadow: var(--shadow-lg);
+                        margin-bottom: var(--spacing-md);
+                    ">
+                        <h2 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);" class="khmer-font">សូមអបអរសាទរ! 🎉</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);" class="khmer-font">អ្នកបានបញ្ចប់តេស្តរួចរាល់!</p>
+                        
+                        <div style="
+                            font-size: 3rem;
+                            font-weight: 700;
+                            color: var(--success-color);
+                            margin: var(--spacing-md) 0;
+                        ">${score}</div>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);" class="khmer-font">
+                            អ្នកឆ្លើយត្រូវ ${score / 10} ក្នុងចំណោម ${currentQuiz.length} សំណួរ
+                        </p>
+                        
+                        <div style="max-width: 400px; margin: var(--spacing-lg) auto;">
+                            <label style="
+                                display: block;
+                                text-align: left;
+                                margin-bottom: 0.5rem;
+                                font-weight: 600;
+                                color: var(--text-primary);
+                            " class="khmer-font">បញ្ចូលឈ្មោះរបស់អ្នក:</label>
+                            <input type="text" id="username" style="
+                                width: 100%;
+                                padding: 0.75rem;
+                                border: 2px solid var(--border-color);
+                                border-radius: var(--radius-md);
+                                font-size: 1rem;
+                                margin-bottom: var(--spacing-md);
+                            " placeholder="ឈ្មោះរបស់អ្នក..." value="អ្នកចំណេះដឹង">
+                        </div>
+                        
+                        <div style="
+                            display: flex;
+                            gap: 1rem;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                        ">
+                            <button class="btn btn-secondary" onclick="showHomePage()">
+                                <i data-lucide="home"></i>
+                                <span class="khmer-font">ទំព័រដើម</span>
+                            </button>
+                            <button class="btn btn-success" onclick="saveQuizScore()">
+                                <i data-lucide="save"></i>
+                                <span class="khmer-font">រក្សាទុកពិន្ទុ</span>
+                            </button>
+                            <button class="btn" style="background: var(--accent-color); color: #333;" onclick="startQuiz('${currentLesson.id}')">
+                                <i data-lucide="refresh-cw"></i>
+                                <span class="khmer-font">សាកល្បងម្តងទៀត</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('main-content').innerHTML = html;
+            updateIcons();
+        }
+
+        // Save Quiz Score
+        async function saveQuizScore() {
+            const usernameInput = document.getElementById('username');
+            const username = usernameInput ? usernameInput.value.trim() : '';
+            
+            if (!username) {
+                showMessage('សូមបញ្ចូលឈ្មោះរបស់អ្នក', 'error');
+                return;
+            }
+            
+            const success = await saveScore(username, score, currentLesson.id);
+            if (success) {
+                // Show leaderboard after saving
+                setTimeout(() => {
+                    showLeaderboardPage();
+                }, 1500);
+            }
+        }
+
+        // Show Leaderboard
+        async function showLeaderboardPage() {
+            console.log('Showing leaderboard...');
+            currentPage = 'leaderboard';
+            updateNavLinks();
+            
+            if (scoresData.length === 0) {
+                await loadScores();
+            }
+            
+            const topScores = scoresData.slice(0, 20);
+            
+            const html = `
+                <div class="fade-in">
+                    <h1 class="page-title khmer-font">តារាងចំណាត់ថ្នាក់</h1>
+                    <p class="page-subtitle khmer-font">មើលអ្នកដែលមានពិន្ទុខ្ពស់បំផុត</p>
+                    
+                    ${topScores.length === 0 ? `
+                        <div style="
+                            text-align: center;
+                            padding: var(--spacing-lg);
+                            background: white;
+                            border-radius: var(--radius-lg);
+                            box-shadow: var(--shadow-sm);
+                        ">
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);" class="khmer-font">
+                                មិនទាន់មានពិន្ទុណាមួយទេ។ សូមធ្វើតេស្តដើម្បីបង្កើតពិន្ទុ!
+                            </p>
+                            <button class="btn btn-primary" onclick="showHomePage()">
+                                <i data-lucide="play-circle"></i>
+                                <span class="khmer-font">ចាប់ផ្តើមរៀន</span>
+                            </button>
+                        </div>
+                    ` : `
+                        <div style="overflow-x: auto;">
+                            <table class="leaderboard-table">
+                                <thead>
+                                    <tr>
+                                        <th class="khmer-font">ចំណាត់ថ្នាក់</th>
+                                        <th class="khmer-font">ឈ្មោះ</th>
+                                        <th class="khmer-font">មេរៀន</th>
+                                        <th class="khmer-font">ពិន្ទុ</th>
+                                        <th class="khmer-font">ថ្ងៃខែ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${topScores.map((score, index) => `
+                                        <tr>
+                                            <td style="font-weight: 700; color: var(--primary-color);">
+                                                ${index < 3 ? ['🥇', '🥈', '🥉'][index] : ''} ${index + 1}
+                                            </td>
+                                            <td class="khmer-font">${score.username}</td>
+                                            <td class="khmer-font">មេរៀន ${score.lessonid || '1'}</td>
+                                            <td style="font-weight: 700; color: var(--secondary-color);">${score.score}</td>
+                                            <td class="khmer-font">${score.timestamp ? new Date(score.timestamp).toLocaleDateString('km-KH') : ''}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: var(--spacing-lg);">
+                            <button class="btn btn-primary" onclick="showHomePage()">
+                                <i data-lucide="home"></i>
+                                <span class="khmer-font">ត្រឡប់ទៅមេរៀន</span>
+                            </button>
+                        </div>
+                    `}
+                </div>
+            `;
+            
+            document.getElementById('main-content').innerHTML = html;
+            updateIcons();
+        }
+
+        // Update Navigation
+        function updateNavLinks() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            if (currentPage === 'home') {
+                const homeLink = document.querySelector('.nav-link[onclick*="home"]');
+                if (homeLink) homeLink.classList.add('active');
+            } else if (currentPage === 'leaderboard') {
+                const leaderboardLink = document.querySelector('.nav-link[onclick*="leaderboard"]');
+                if (leaderboardLink) leaderboardLink.classList.add('active');
+            }
+            
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('show');
+        }
+
+        // Show Page
+        function showPage(page) {
+            console.log('Show page:', page);
+            if (page === 'home') {
+                showHomePage();
+            } else if (page === 'leaderboard') {
+                showLeaderboardPage();
+            }
+            
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('show');
+        }
+
+        // Refresh Data
+        async function refreshData() {
+            showMessage('កំពុងផ្ទុកទិន្នន័យថ្មី...', 'success');
+            
+            try {
+                await loadAllData();
+                showMessage('ផ្ទុកទិន្នន័យថ្មីដោយជោគជ័យ!', 'success');
+                
+                // Refresh current page
+                if (currentPage === 'home') {
+                    showHomePage();
+                } else if (currentPage === 'leaderboard') {
+                    showLeaderboardPage();
+                } else if (currentPage === 'lesson' && currentLesson) {
+                    showLessonDetail(currentLesson.id);
+                }
+            } catch (error) {
+                console.error('Error refreshing data:', error);
+                showMessage('មានបញ្ហាក្នុងការផ្ទុកទិន្នន័យ', 'error');
+            }
+        }
+
+        // Initialize App
+        async function initApp() {
+            console.log('Initializing app...');
+            try {
+                await loadAllData();
+                showHomePage();
+                console.log('App initialized successfully');
+            } catch (error) {
+                console.error('Error initializing app:', error);
+                showMessage('មានបញ្ហាក្នុងការចាប់ផ្តើមកម្មវិធី', 'error');
+                
+                // Show home page anyway with sample data
+                showHomePage();
+            }
+        }
+
+        // Make functions available globally
+        window.showPage = showPage;
+        window.showLessonDetail = showLessonDetail;
+        window.startQuiz = startQuiz;
+        window.selectOption = selectOption;
+        window.checkAnswer = checkAnswer;
+        window.saveQuizScore = saveQuizScore;
+        window.refreshData = refreshData;
+        window.showHomePage = showHomePage;
+        window.showLeaderboardPage = showLeaderboardPage;
+        window.updateIcons = updateIcons;
+        window.showMessage = showMessage;
+    </script>
+</body>
+</html>
