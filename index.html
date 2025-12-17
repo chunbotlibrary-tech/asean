@@ -521,7 +521,7 @@
         // Configuration
         const SHEET_ID = '1gU-k4KuhjqLTqKzOakfj2duhNf6mhrGO_NkW8dwiHTE';
         const API_KEY = 'AIzaSyCmWu60e8pf939POZxBlHjkRBT_FsLJSlI';
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxCmgTgRIO5mRczDYZZAuzszVDsK6PRITL8CGZt9EvybM4EQ_JbNyUjpM-bNHuz26WWzA/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAm_zTg4JrpOAHrxerDaZvzf1panuAfSPbZ51H7fLHxnXH4J14CmxsIqiZc0B1J4wuKg/exec';
 
         // Global variables - INITIALIZED HERE
         let currentPage = 'home';
@@ -701,71 +701,65 @@
 
         // Save score via Apps Script
         async function saveScore(username, scoreValue, lessonId) {
-            const scoreData = {
-                username: username.trim(),
-                score: scoreValue.toString(),
-                lessonid: lessonId,
-                timestamp: new Date().toISOString()
-            };
+    const scoreData = {
+        username: username.trim(),
+        score: scoreValue.toString(),
+        lessonid: lessonId,
+        timestamp: new Date().toISOString()
+    };
+    
+    console.log('Attempting to save score via FormData:', scoreData);
+    
+    try {
+        // ប្រើ FormData ជំនួសឱ្យ JSON
+        const formData = new FormData();
+        formData.append('username', scoreData.username);
+        formData.append('score', scoreData.score);
+        formData.append('lessonid', scoreData.lessonid);
+        formData.append('timestamp', scoreData.timestamp);
+        
+        // ផ្ញើទិន្នន័យជា FormData (មិនកំណត់ Content-Type header)
+        const response = await fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            body: formData
+        });
+        
+        console.log('Response status:', response.status);
+        const result = await response.json();
+        console.log('Response data:', result);
+        
+        if (result.success) {
+            // Save to localStorage as backup
+            saveToLocalStorage(scoreData);
             
-            console.log('Attempting to save score:', scoreData);
+            // FIX: Ensure scoresData array exists before pushing
+            if (!window.scoresData) window.scoresData = [];
+            window.scoresData.push(scoreData);
             
-            try {
-                // Try to save to Google Sheets via Apps Script
-                const response = await fetch(APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(scoreData)
-                });
-                
-                console.log('Response status:', response.status);
-                
-                const result = await response.json();
-                console.log('Response data:', result);
-                
-                if (result.success) {
-                    console.log('Score saved to Google Sheets successfully');
-                    
-                    // Also save to localStorage as backup
-                    saveToLocalStorage(scoreData);
-                    
-                    // Add to current scores data
-                    scoresData.push(scoreData);
-                    scoresData.sort((a, b) => {
-                        const scoreA = parseInt(a.score) || 0;
-                        const scoreB = parseInt(b.score) || 0;
-                        return scoreB - scoreA;
-                    });
-                    
-                    showMessage('រក្សាទុកពិន្ទុដោយជោគជ័យ!', 'success');
-                    return true;
-                } else {
-                    throw new Error(result.error || 'Save failed');
-                }
-            } catch (error) {
-                console.error('Error saving to Google Sheets:', error);
-                
-                // Fallback: Save to localStorage only
-                const saved = saveToLocalStorage(scoreData);
-                if (saved) {
-                    // Add to current scores data
-                    scoresData.push(scoreData);
-                    scoresData.sort((a, b) => {
-                        const scoreA = parseInt(a.score) || 0;
-                        const scoreB = parseInt(b.score) || 0;
-                        return scoreB - scoreA;
-                    });
-                    
-                    showMessage('រក្សាទុកក្នុងកុំព្យូទ័ររបស់អ្នកដោយជោគជ័យ', 'success');
-                    return true;
-                } else {
-                    showMessage('មិនអាចរក្សាទុកពិន្ទុបាន', 'error');
-                    return false;
-                }
-            }
+            showMessage('រក្សាទុកពិន្ទុដោយជោគជ័យ!', 'success');
+            return true;
+        } else {
+            throw new Error(result.error || 'Save failed');
         }
+        
+    } catch (error) {
+        console.error('Error saving to Google Sheets:', error);
+        
+        // Fallback: Save to localStorage only
+        const saved = saveToLocalStorage(scoreData);
+        if (saved) {
+            // FIX: Ensure scoresData array exists before pushing
+            if (!window.scoresData) window.scoresData = [];
+            window.scoresData.push(scoreData);
+            
+            showMessage('រក្សាទុកក្នុងកុំព្យូទ័ររបស់អ្នកដោយជោគជ័យ', 'success');
+            return true;
+        } else {
+            showMessage('មិនអាចរក្សាទុកពិន្ទុបាន', 'error');
+            return false;
+        }
+    }
+}
 
         function saveToLocalStorage(scoreData) {
             try {
